@@ -97,3 +97,18 @@ ros2 topic echo /gripper/force_status
 ```
 
 ---
+⚠️ Troubleshooting
+If the gripper node fails to start or throws errors like ModuleNotFoundError: No module named 'serial' or Permission denied: '/dev/ttyUSB0', make sure to:
+
+Install the required Python serial package (inside your environment or Docker container):
+
+bash
+Copy
+Edit
+pip install pyserial
+Grant access to the USB serial device:
+
+bash
+Copy
+Edit
+sudo chmod 666 /dev/ttyUSB0
