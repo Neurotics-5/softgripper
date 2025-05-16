@@ -21,6 +21,8 @@ This package provides a modular ROS 2 interface for controlling a tendon-driven 
 
 ## 🚀 ROS 2 Commands (via `/gripper/command`)
 
+ros2 run soft_gripper gripper_node
+
 | Command                                | Description                                                          |
 | -------------------------------------- | -------------------------------------------------------------------- |
 | `open`                                 | Opens the gripper to predefined open positions from the config file  |
