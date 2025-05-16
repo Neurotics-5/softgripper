@@ -1,7 +1,5 @@
 # softgripper
 
-Absolutely — here's a clear and professional **README section** for your gripper control package. You can copy-paste this into your GitHub README:
-
 ---
 
 # 🦾 Soft Gripper Control Interface (ROS 2)
@@ -97,5 +95,3 @@ ros2 topic echo /gripper/force_status
 ```
 
 ---
-
-Let me know if you’d like this exported as a markdown `.md` file or formatted with a collapsible GitHub TOC.
