@@ -88,8 +88,8 @@ ros2 topic pub --once /gripper/command std_msgs/String "data: 'parallel_grip:60'
 ### 3. Pinch Grip Open and Close 
 
 ```bash
-ros2 topic pub --once /gripper/command std_msgs/String "data: 'parallel_grip:1'"
-ros2 topic pub --once /gripper/command std_msgs/String "data: 'parallel_grip:0'"
+ros2 topic pub --once /gripper/command std_msgs/String "data: 'pinch_grip:1'"
+ros2 topic pub --once /gripper/command std_msgs/String "data: 'pinch_grip:0'"
 ```
 
 ### 4. Monitor feedback
