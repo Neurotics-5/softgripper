@@ -3,7 +3,6 @@ import yaml
 import os
 
 from ament_index_python.packages import get_package_share_directory
-
 from soft_gripper.gripper_ros2_node import GripperROS2Node
 from soft_gripper.dynamixel_client import DynamixelClient
 from soft_gripper.gripper_controller import GripperController
@@ -23,13 +22,9 @@ def main(args=None):
     port = config.get('port', '/dev/ttyUSB0')
     baudrate = config.get('baudrate', 57600)
 
-    # Load open and closed positions directly from config
-    open_positions = [config['open_positions'][mid] for mid in motor_ids]
-    closed_positions = [config['closed_positions'][mid] for mid in motor_ids]
-
     # Initialize Dynamixel client and gripper controller
     dxl_client = DynamixelClient(motor_ids, port=port, baudrate=baudrate)
-    gripper = GripperController(dxl_client, motor_ids, open_positions, closed_positions, config)
+    gripper = GripperController(dxl_client, motor_ids, config)
     gripper.connect()
 
     # Start ROS 2 node

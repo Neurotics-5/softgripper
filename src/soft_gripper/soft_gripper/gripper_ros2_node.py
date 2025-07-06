@@ -1,7 +1,11 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+from rclpy.action import ActionServer
+from rclpy.callback_groups import ReentrantCallbackGroup
+# from soft_gripper.action import ParallelGrip
 import numpy as np
+import asyncio
 
 class GripperROS2Node(Node):
     def __init__(self, gripper_controller):
@@ -10,10 +14,9 @@ class GripperROS2Node(Node):
 
         # Publishers
         self.status_pub = self.create_publisher(String, 'gripper/status', 100)
-        self.force_status_pub = self.create_publisher(String, 'gripper/force_status', 10)
         self.goal_reached_pub = self.create_publisher(String, 'gripper/goal_reached', 10)
 
-        # Simple command subscriber for testing
+        # Simple command subscriber (e.g. open, move_to_position)
         self.command_sub = self.create_subscription(
             String,
             'gripper/command',
@@ -23,12 +26,17 @@ class GripperROS2Node(Node):
 
         # Timers
         self.status_timer = self.create_timer(0.01, self.status_callback)  # 100Hz status
-        self.force_monitor_timer = self.create_timer(0.02, self.force_monitor_callback)  # 50Hz force
 
-        self.force_control_active = False
-        self.force_target = 0.0
+        # # Action Server
+        # self._parallel_grip_action_server = ActionServer(
+        #     self,
+        #     ParallelGrip,
+        #     'parallel_grip',
+        #     self.execute_parallel_grip_callback,
+        #     callback_group=ReentrantCallbackGroup()
+        # )
 
-        self.get_logger().info('Gripper ROS2 Node ready for simple command testing.')
+        self.get_logger().info('Gripper ROS2 Node ready. Action server available on /parallel_grip')
 
     def command_callback(self, msg):
         command = msg.data.strip().lower()
@@ -36,11 +44,28 @@ class GripperROS2Node(Node):
 
         if command == 'open':
             self.gripper.open()
-            self.force_control_active = False
+        
+        elif command.startswith('parallel_grip:'):
+            try:
+                width_mm = float(command.split(':')[1].strip())
+                self.get_logger().info(f'Executing parallel grip with width {width_mm} mm')
+                self.gripper.parallel_grip(width_mm)
+            except Exception as e:
+                self.get_logger().error(f'Invalid parallel grip command: {e}')
+        
+        elif command.startswith('pinch_grip:'):
+            try:
+                state_str = command.split(':')[1].strip()
+                state = int(state_str)          # 1 = open, 0 = close
+                if state not in (0, 1):
+                    raise ValueError('state must be 0 (close) or 1 (open)')
 
-        elif command == 'close':
-            self.gripper.close_parallel()
-            self.force_control_active = False
+                self.get_logger().info(f'Executing pinch grip: {"open" if state == 1 else "close"}')
+                self.gripper.pinch_grip(state)
+
+            except Exception as e:
+                self.get_logger().error(f'Invalid pinch grip command: {e}')
+
 
         elif command.startswith('move_to_position:'):
             try:
@@ -62,38 +87,15 @@ class GripperROS2Node(Node):
 
                         if speed is not None:
                             speed_dict[mid] = int(speed.strip())
-
                 else:
                     value = float(positions_str.strip())
                     pos_dict = {mid: value for mid in self.gripper.motor_ids}
                     speed_dict = {mid: 50 for mid in self.gripper.motor_ids}  # default speed
 
                 self.gripper.move_to_positions(pos_dict, speed_dict=speed_dict)
-                self.force_control_active = False
                 self.get_logger().info(f'Moved to positions: {pos_dict} with speeds: {speed_dict}')
             except Exception as e:
                 self.get_logger().error(f'Invalid position format: {e}')
-
-        elif command.startswith('move_to_position_force:'):
-            try:
-                parts = command.split(':')
-                pos_value = float(parts[1])
-                force_value = float(parts[2])
-                target_positions = [pos_value] * len(self.gripper.motor_ids)
-                self.gripper.move_to_positions(target_positions, slow=True)
-                self.force_target = force_value
-                self.force_control_active = True
-                self.get_logger().info(f'Move to {pos_value} with force control target {force_value}N')
-            except (IndexError, ValueError):
-                self.get_logger().error('Invalid format. Use move_to_position_force:<position>:<force>.')
-
-        elif command.startswith('set_operating_mode:'):
-            mode = command.split(':')[1].strip()
-            if mode in ['position', 'force']:
-                self.gripper.set_control_mode(mode)
-                self.get_logger().info(f'Set torque control mode to {mode}')
-            else:
-                self.get_logger().error('Invalid operating mode. Use "position" or "force".')
 
         elif command.startswith('set_torque_enable:'):
             value = command.split(':')[1].strip()
@@ -117,18 +119,32 @@ class GripperROS2Node(Node):
 
         # Publish goal reached status
         goal_msg = String()
-        if self.gripper.is_goal_reached():
-            goal_msg.data = "reached"
-        else:
-            goal_msg.data = "moving"
+        goal_msg.data = "reached" if self.gripper.is_goal_reached() else "moving"
         self.goal_reached_pub.publish(goal_msg)
 
-    def force_monitor_callback(self):
-        current_force = self.gripper.read_current_force()
-        msg = String()
-        msg.data = f'Current grip force: {current_force:.2f} N'
-        self.force_status_pub.publish(msg)
+    # async def execute_parallel_grip_callback(self, goal_handle):
+    #     width_mm = goal_handle.request.width_mm
+    #     self.get_logger().info(f'Received parallel grip action goal: {width_mm:.2f} mm')
 
-        # Only run force control if explicitly enabled via move_to_position_force
-        if self.force_control_active:
-            self.gripper.adjust_force_control(self.force_target, current_force, dt=0.02)
+    #     try:
+    #         self.gripper.parallel_grip(width_mm)
+
+    #         while not self.gripper.is_goal_reached():
+    #             status = self.gripper.update()
+    #             feedback_msg = ParallelGrip.Feedback()
+    #             feedback_msg.current_width = status['width']
+    #             goal_handle.publish_feedback(feedback_msg)
+    #             await asyncio.sleep(0.05)  # 20 Hz loop
+
+    #         result = ParallelGrip.Result()
+    #         result.success = True
+    #         result.message = f'Grip completed for width {width_mm:.2f} mm'
+    #         self.get_logger().info(result.message)
+    #         return result
+
+    #     except Exception as e:
+    #         result = ParallelGrip.Result()
+    #         result.success = False
+    #         result.message = f'Error: {str(e)}'
+    #         self.get_logger().error(result.message)
+    #         return result
