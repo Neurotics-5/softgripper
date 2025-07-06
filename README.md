@@ -21,7 +21,6 @@ This package provides a modular ROS 2 interface for controlling a tendon-driven 
 
 ## 🚀 ROS 2 Commands (via `/gripper/command`)
 
-ros2 run soft_gripper gripper_node
 
 | Command                                | Description                                                          |
 | -------------------------------------- | -------------------------------------------------------------------- |
@@ -68,24 +67,29 @@ You can define:
 
 ## 🧪 Example Usage
 
-### 1. Enable torque and set mode
+### 0. Run Node
 
 ```bash
-ros2 topic pub --once /gripper/command std_msgs/String "data: 'set_operating_mode:position'"
+ros2 run soft_gripper gripper_node
+```
+
+### 1. Enable torque
+
+```bash
 ros2 topic pub --once /gripper/command std_msgs/String "data: 'set_torque_enable:on'"
 ```
 
-### 2. Open or close
+### 2. Parallel Grip
 
 ```bash
-ros2 topic pub --once /gripper/command std_msgs/String "data: 'open'"
-ros2 topic pub --once /gripper/command std_msgs/String "data: 'close'"
+ros2 topic pub --once /gripper/command std_msgs/String "data: 'parallel_grip:60'"
 ```
 
-### 3. Move with speed profile
+### 3. Pinch Grip Open and Close 
 
 ```bash
-ros2 topic pub --once /gripper/command std_msgs/String "data: 'move_to_position:1=3.0@40,2=2.5@30'"
+ros2 topic pub --once /gripper/command std_msgs/String "data: 'parallel_grip:1'"
+ros2 topic pub --once /gripper/command std_msgs/String "data: 'parallel_grip:0'"
 ```
 
 ### 4. Monitor feedback
