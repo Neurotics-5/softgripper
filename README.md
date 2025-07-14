@@ -67,6 +67,11 @@ You can define:
 
 ## 🧪 Example Usage
 
+
+```
+ros2 launch soft_gripper view_gripper.launch.py
+```
+
 ### 0. Run Node
 
 ```bash
