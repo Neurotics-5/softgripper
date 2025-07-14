@@ -1,0 +1,94 @@
+running egg_info
+creating ../../build/soft_gripper/soft_gripper.egg-info
+writing ../../build/soft_gripper/soft_gripper.egg-info/PKG-INFO
+writing dependency_links to ../../build/soft_gripper/soft_gripper.egg-info/dependency_links.txt
+writing entry points to ../../build/soft_gripper/soft_gripper.egg-info/entry_points.txt
+writing requirements to ../../build/soft_gripper/soft_gripper.egg-info/requires.txt
+writing top-level names to ../../build/soft_gripper/soft_gripper.egg-info/top_level.txt
+writing manifest file '../../build/soft_gripper/soft_gripper.egg-info/SOURCES.txt'
+reading manifest file '../../build/soft_gripper/soft_gripper.egg-info/SOURCES.txt'
+writing manifest file '../../build/soft_gripper/soft_gripper.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/felix/soft_gripper/softgripper/build/soft_gripper/build
+creating /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib
+creating /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+copying ./soft_gripper/__init__.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+copying ./soft_gripper/tactile_sensor_reader.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+copying ./soft_gripper/gripper_ros2_node.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+copying ./soft_gripper/main.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+copying ./soft_gripper/gripper_controller.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+copying ./soft_gripper/dynamixel_client.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+creating /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/action
+copying ./soft_gripper/action/__init__.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/action
+copying ./soft_gripper/action/ParallelGrip.action -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/action
+running install
+running install_lib
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/action/__init__.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/action/ParallelGrip.action -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/__init__.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/tactile_sensor_reader.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/gripper_ros2_node.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/main.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/gripper_controller.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/dynamixel_client.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/tactile_sensor_reader.py to tactile_sensor_reader.cpython-310.pyc
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/gripper_ros2_node.py to gripper_ros2_node.cpython-310.pyc
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/main.py to main.cpython-310.pyc
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/gripper_controller.py to gripper_controller.cpython-310.pyc
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/dynamixel_client.py to dynamixel_client.cpython-310.pyc
+running install_data
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/ament_index
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/ament_index/resource_index
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/ament_index/resource_index/packages
+copying resource/soft_gripper -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/ament_index/resource_index/packages
+copying package.xml -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/config
+copying config/gripper_config.yaml -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/config
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF
+copying URDF/URDF.urdf -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/main_housing.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/sensor_shell_v3-v35.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/D435_Solid-v2.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/motor_mount.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/sensor_base-v53.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/sensor_connector-v79-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/camera_link.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_servo-v6-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_servo_idle-v2.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_finger-v21-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/black_gel_new-v5-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_servo_idle-v2-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/cable_cover_1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_finger_idle-v21.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/motor_simple-v2-2.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/jetson_clamp.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/silicon_tip-v1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/motor_simple-v2-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/camera_cover_1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_finger-v21.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/camera_cover_2.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/sensor_connector-v79.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/silicon_tip-v1-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/sensor_shell_v3-v35-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_finger_idle-v21-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/hinge_servo-v6.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/cable_cover_2.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/housing_cover.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/motor_simple-v2-3.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/base_link.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/black_gel_new-v5.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/motor_simple-v2.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+copying URDF/meshes/sensor_base-v53-1.stl -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/URDF/meshes
+creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/launch
+copying launch/view_gripper.launch.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/share/soft_gripper/launch
+running install_egg_info
+Copying ../../build/soft_gripper/soft_gripper.egg-info to /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper-0.0.0-py3.10.egg-info
+running install_scripts
+Installing gripper_node script to /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/soft_gripper
+writing list of installed files to '/home/felix/soft_gripper/softgripper/build/soft_gripper/install.log'

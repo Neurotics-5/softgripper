@@ -1,18 +1,21 @@
 from setuptools import setup, find_packages
 from glob import glob
+import os
 
 package_name = 'soft_gripper'
 
 setup(
     name=package_name,
     version='0.0.0',
-    packages=find_packages(where='.'),  # search from current dir
-    package_dir={'': '.'},              # current dir holds packages
+    packages=find_packages(where='.'),  # current directory holds packages
+    package_dir={'': '.'},
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/config', glob('config/*')),
-        # ('share/' + package_name + '/action', glob('soft_gripper/action/*.action')),
+        ('share/' + package_name + '/config', glob('config/*.yaml')),
+        ('share/' + package_name + '/URDF', ['URDF/URDF.urdf']),
+        ('share/' + package_name + '/URDF/meshes', glob('URDF/meshes/*.stl')),
+        ('share/' + package_name + '/launch', glob('launch/*.launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -26,6 +29,7 @@ setup(
         ],
     },
 )
+
 
 
 

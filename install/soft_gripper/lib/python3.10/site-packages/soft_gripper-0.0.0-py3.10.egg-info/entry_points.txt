@@ -1,0 +1,2 @@
+[console_scripts]
+gripper_node = soft_gripper.main:main

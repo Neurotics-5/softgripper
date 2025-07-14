@@ -1,0 +1,6 @@
+source;share/soft_gripper/hook/pythonpath.ps1
+source;share/soft_gripper/hook/pythonpath.dsv
+source;share/soft_gripper/hook/pythonpath.sh
+source;share/soft_gripper/hook/ament_prefix_path.ps1
+source;share/soft_gripper/hook/ament_prefix_path.dsv
+source;share/soft_gripper/hook/ament_prefix_path.sh

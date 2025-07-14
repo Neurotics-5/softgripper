@@ -1,0 +1,9 @@
+# Goal
+float64 width_mm
+---
+# Result
+bool success
+string message
+---
+# Feedback
+float64 current_width
