@@ -42,8 +42,10 @@ class GripperROS2Node(Node):
         command = msg.data.strip().lower()
         self.get_logger().info(f'Received command: {command}')
 
-        if command == 'open':
-            self.gripper.open()
+        if command == 'reboot':
+            self.get_logger().warn('Rebooting all motors...')
+            self.gripper.reboot_all_motors()
+
 
         elif command.startswith('parallel_grip:'):
             try:
@@ -52,6 +54,14 @@ class GripperROS2Node(Node):
                 self.gripper.parallel_grip(width_mm)
             except Exception as e:
                 self.get_logger().error(f'Invalid parallel grip command: {e}')
+
+        elif command.startswith('parallel_force:'):
+            try:
+                width_mm = float(command.split(':')[1].strip())
+                self.get_logger().info(f'Executing parallel force grip with width {width_mm} mm')
+                self.gripper.parallel_force(width_mm)
+            except Exception as e:
+                self.get_logger().error(f'Invalid parallel force command: {e}')
 
         elif command.startswith('pinch_grip:'):
             try:
@@ -118,7 +128,7 @@ class GripperROS2Node(Node):
             status = self.gripper.update()
 
             msg = String()
-            msg.data = f"Pos: {status['positions']}, Currents: {status['currents']}"
+            msg.data = f"Pos: {status['positions']}, Load: {status['load']}"
             self.status_pub.publish(msg)
 
             goal_msg = String()

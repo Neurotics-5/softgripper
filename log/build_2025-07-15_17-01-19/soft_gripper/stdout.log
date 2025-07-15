@@ -18,6 +18,7 @@ copying ./soft_gripper/tactile_sensor_reader.py -> /home/felix/soft_gripper/soft
 copying ./soft_gripper/gripper_ros2_node.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
 copying ./soft_gripper/main.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
 copying ./soft_gripper/gripper_controller.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
+copying ./soft_gripper/dynamixel_client_test.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
 copying ./soft_gripper/dynamixel_client.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper
 creating /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/action
 copying ./soft_gripper/action/__init__.py -> /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/action
@@ -33,6 +34,7 @@ copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_g
 copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/gripper_ros2_node.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
 copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/main.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
 copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/gripper_controller.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
+copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/dynamixel_client_test.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
 copying /home/felix/soft_gripper/softgripper/build/soft_gripper/build/lib/soft_gripper/dynamixel_client.py -> /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper
 byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action/__init__.py to __init__.cpython-310.pyc
 byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/__init__.py to __init__.cpython-310.pyc
@@ -40,6 +42,7 @@ byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/pyt
 byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/gripper_ros2_node.py to gripper_ros2_node.cpython-310.pyc
 byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/main.py to main.cpython-310.pyc
 byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/gripper_controller.py to gripper_controller.cpython-310.pyc
+byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/dynamixel_client_test.py to dynamixel_client_test.cpython-310.pyc
 byte-compiling /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/dynamixel_client.py to dynamixel_client.cpython-310.pyc
 running install_data
 creating /home/felix/soft_gripper/softgripper/install/soft_gripper/share/ament_index

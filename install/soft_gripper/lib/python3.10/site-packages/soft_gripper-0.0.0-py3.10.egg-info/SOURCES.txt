@@ -10,6 +10,7 @@ setup.py
 ../../build/soft_gripper/soft_gripper.egg-info/zip-safe
 ./soft_gripper/__init__.py
 ./soft_gripper/dynamixel_client.py
+./soft_gripper/dynamixel_client_test.py
 ./soft_gripper/gripper_controller.py
 ./soft_gripper/gripper_ros2_node.py
 ./soft_gripper/main.py

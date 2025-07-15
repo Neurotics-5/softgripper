@@ -3,6 +3,7 @@
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/gripper_ros2_node.py
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/main.py
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/gripper_controller.py
+/home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/dynamixel_client_test.py
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/dynamixel_client.py
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action/__init__.py
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action/ParallelGrip.action
@@ -11,6 +12,7 @@
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/__pycache__/gripper_ros2_node.cpython-310.pyc
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/__pycache__/main.cpython-310.pyc
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/__pycache__/gripper_controller.cpython-310.pyc
+/home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/__pycache__/dynamixel_client_test.cpython-310.pyc
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/__pycache__/dynamixel_client.cpython-310.pyc
 /home/felix/soft_gripper/softgripper/install/soft_gripper/lib/python3.10/site-packages/soft_gripper/action/__pycache__/__init__.cpython-310.pyc
 /home/felix/soft_gripper/softgripper/install/soft_gripper/share/ament_index/resource_index/packages/soft_gripper

@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 class GripperController:
     def __init__(self, dynamixel_client, motor_ids, config):
@@ -26,7 +27,12 @@ class GripperController:
         self.pid_last_error = 0.0
 
         self.last_positions = np.zeros(len(self.motor_ids))
-        self.last_currents = np.zeros(len(self.motor_ids))
+        self.last_load = np.zeros(len(self.motor_ids))
+
+        self.contact_threshold = 20.0 # Example: threshold at which contact is considered made
+        self.max_load_threshold = 20.0  # Example: stall-level load
+        self.tip_tolerance_rad = np.deg2rad(20)  # Small follow-up motion for tip fingers
+
 
 
     def connect(self):
@@ -73,6 +79,73 @@ class GripperController:
         }
 
         self.move_to_positions(target_positions)
+
+    def parallel_force(self, width):
+        self.grip = 'ParallelForce'
+
+        y_dis = width / 2.0
+        if y_dis > self.l1:
+            print(f"[parallel_force] Width too large: half-width {y_dis} mm exceeds l1 = {self.l1}")
+            return
+
+        try:
+            theta = np.arcsin(y_dis / self.l1)
+        except ValueError:
+            print("[parallel_force] Invalid width: arcsin input out of range")
+            return
+
+        target_positions = {
+            1: np.clip(theta + np.pi, self.min_position["1"], self.max_position["1"]),
+            2: np.clip(-theta + np.pi, self.min_position["2"], self.max_position["2"]),
+            3: np.clip(-theta + np.pi, self.min_position["3"], self.max_position["3"]),
+            4: np.clip(theta + np.pi, self.min_position["4"], self.max_position["4"]),
+        }
+
+        self.move_to_positions(target_positions)
+
+        # Wait for contact on base motors (1 and 3)
+        print("[parallel_force] Monitoring load for contact on base fingers...")
+        start_time = time.time()
+        timeout_sec = 3.0
+        while True:
+            _, _, load = self.client.read_pos_vel_load()
+            if abs(load[0]) > self.contact_threshold or abs(load[2]) > self.contact_threshold:
+                print(f"[parallel_force] Contact detected. Load: {load}")
+                break
+            if time.time() - start_time > timeout_sec:
+                print("[parallel_force] Timeout: No contact detected within 3 seconds.")
+                return
+            time.sleep(0.01)
+
+        # Freeze base motors, let tip motors follow slightly
+        positions, _, _ = self.client.read_pos_vel_load()
+        base_hold = {
+            1: positions[0],  # base A
+            3: positions[2],  # base B
+        }
+        tip_followup = {
+            2: np.clip(positions[1] - self.tip_tolerance_rad, self.min_position["2"], self.max_position["2"]),
+            4: np.clip(positions[3] + self.tip_tolerance_rad, self.min_position["4"], self.max_position["4"]),
+        }
+
+        final_target = {**base_hold, **tip_followup}
+        print(f"[parallel_force] Tip follow-up targets: M2 -> {tip_followup[2]:.3f}, M4 -> {tip_followup[4]:.3f}")
+        self.move_to_positions(final_target)
+
+        # Wait for any motor to reach high force
+        print("[parallel_force] Tip fingers continuing to apply force...")
+        start_time = time.time()
+        while True:
+            _, _, load = self.client.read_pos_vel_load()
+            if np.any(np.abs(load) > self.max_load_threshold):
+                print(f"[parallel_force] Max load reached, stopping. Load: {load}")
+                break
+            if time.time() - start_time > timeout_sec:
+                print("[parallel_force] Timeout: no force threshold reached within 3 seconds.")
+                break
+            time.sleep(0.01)
+
+        print("[parallel_force] Grip complete.")
 
 
     def pinch_grip(self, state: int):
@@ -123,11 +196,11 @@ class GripperController:
         self.client.write_desired_pos(self.motor_ids, self.goal_positions)
 
     def read_current_positions(self):
-        positions, _, _ = self.client.read_pos_vel_cur()
+        positions, _, _ = self.client.read_pos_vel_load()
         return positions
 
     def update(self):
-        positions, velocities, currents = self.client.read_pos_vel_cur()
+        positions, velocities, load = self.client.read_pos_vel_load()
 
         # Compute derived values (only if grip mode needs it)
         if self.grip in ('Pinch', 'Parallel'):
@@ -142,7 +215,7 @@ class GripperController:
 
         return {
             'positions': positions,
-            'currents': currents,
+            'load': load,
             'grip': self.grip,
             'width': width,
             'x_pos': x_pos
@@ -173,3 +246,6 @@ class GripperController:
         self.client.write_profile_velocity(self.motor_ids, speed_array)
         self.goal_positions = pos_array
         self.client.write_desired_pos(self.motor_ids, pos_array)
+    
+    def reboot_all_motors(self):
+        self.client.reboot_motors(self.motor_ids)
