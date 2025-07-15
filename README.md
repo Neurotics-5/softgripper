@@ -102,7 +102,7 @@ ros2 topic pub --once /gripper/command std_msgs/String "data: 'parallel_force:60
 ros2 topic pub --once /gripper/command std_msgs/String "data: 'pinch_grip:1'"
 ros2 topic pub --once /gripper/command std_msgs/String "data: 'pinch_grip:0'"
 ```
-### 5. Pinch Grip Open and Close 
+### 5. Reboot if overload
 
 ```bash
 ros2 topic pub --once /gripper/command std_msgs/String "data: 'reboot'"
