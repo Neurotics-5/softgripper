@@ -99,7 +99,7 @@ ros2 topic pub --once /gripper/command std_msgs/String "data: 'pinch_grip:0'"
 ### 4. Pinch Grip Open and Close 
 
 ```bash
-ros2 topic pub /gripper/command std_msgs/String "data: 'reboot'"
+ros2 topic pub --once /gripper/command std_msgs/String "data: 'reboot'"
 ```
 
 ### 5. Monitor feedback
