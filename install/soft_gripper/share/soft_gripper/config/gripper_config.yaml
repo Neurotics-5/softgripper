@@ -20,7 +20,7 @@ max_position_rad:
 max_parallel_grip: 130
 
 # Link lengths for IK or forward modeling
-linkBase: 52
+linkBase: 50
 linkTact: 46
 linkTip: 65
 

@@ -20,7 +20,7 @@ class GripperROS2Node(Node):
         # Publishers
         self.status_pub = self.create_publisher(String, 'gripper/status', 100)
         self.goal_reached_pub = self.create_publisher(String, 'gripper/goal_reached', 10)
-        self.joint_pub = self.create_publisher(JointState, 'joint_states', 10)
+        self.joint_pub = self.create_publisher(JointState, 'gripper/joint_states', 10)
 
         # Create joint name list in correct motor ID order
         self._joint_names = [JOINT_NAME_MAP[mid] for mid in self.gripper.motor_ids]
