@@ -2,6 +2,9 @@
 
 ---
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ea586e07-b55c-4b3e-9fa7-2f7ff502cd0a" />
+
+
 # 🦾 Soft Gripper Control Interface (ROS 2)
 
 This package provides a modular ROS 2 interface for controlling a tendon-driven soft gripper using Dynamixel motors. It supports both **position control** and **force-assisted gripping**, and offers live feedback for status, force, and goal completion.
